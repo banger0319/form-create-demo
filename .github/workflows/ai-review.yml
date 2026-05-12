@@ -1,32 +1,45 @@
 name: AI Code Review
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - synchronize
+      - reopened
   workflow_dispatch:
 
 permissions:
   contents: read
   pull-requests: read
 
-env:
-  AI_REVIEW_PROJECT_TYPES: web
-  AI_REVIEW_MODEL: deepseek-v4-pro
-  AI_REVIEW_BASE_URL: https://api.deepseek.com
-  AI_REVIEW_API_KEY: sk-b4ab85561b4c46edb4bef452a2d0fffa
-
 jobs:
   ai-review:
+    name: AI Code Review
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout target repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Run AI review
+      - name: Run AI code review
         uses: banger0319/code_cr_AI@main
         with:
+          project-types: web
+          model: deepseek-v4-pro
+          base-url: https://api.deepseek.com
+          api-key: sk-b4ab85561b4c46edb4bef452a2d0fffa
           output: ai-review.md
+          fail-on-findings: 'true'
+          strict-rulesets: 'true'
+          language: zh-CN
+          max-diff-bytes: '200000'
 
       - name: Upload AI review report
         uses: actions/upload-artifact@v4
