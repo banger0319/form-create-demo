@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "ff95b390d8d3a40cf013f90031b5b021ecd984d3",
+  "prompts": {},
+  "humans": {
+    "h_859afe6cf571c2": {
+      "author": "陈泽枫 <zefeng.chen@gl-inet.com>"
+    }
+  }
+}
