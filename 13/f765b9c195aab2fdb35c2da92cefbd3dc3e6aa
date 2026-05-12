@@ -1,0 +1,14 @@
+.github/workflows/ai-review.yml
+  h_859afe6cf571c2 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "13f765b9c195aab2fdb35c2da92cefbd3dc3e6aa",
+  "prompts": {},
+  "humans": {
+    "h_859afe6cf571c2": {
+      "author": "陈泽枫 <zefeng.chen@gl-inet.com>"
+    }
+  }
+}
