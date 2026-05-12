@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run AI review
-        uses: banger0319\code_cr_AI@main
+        uses: banger0319/code_cr_AI@main
         with:
           output: ai-review.md
 
