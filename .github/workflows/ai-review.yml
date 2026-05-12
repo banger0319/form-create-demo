@@ -1,0 +1,36 @@
+name: AI Code Review
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+env:
+  AI_REVIEW_PROJECT_TYPES: web
+  AI_REVIEW_MODEL: deepseek-v4-pro
+  AI_REVIEW_BASE_URL: https://api.deepseek.com
+  AI_REVIEW_API_KEY: ${{ secrets.AI_REVIEW_API_KEY }}
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run AI review
+        uses: banger0319\code_cr_AI@main
+        with:
+          output: ai-review.md
+
+      - name: Upload AI review report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-review
+          path: ai-review.md
